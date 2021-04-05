@@ -29,12 +29,18 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
-    public String getDescription(String name) {
-        return sensorRepository.getDescription(name);
+    public String getDescription(Long id) {
+        return sensorRepository.getDescription(id);
     }
 
     @Override
     public List<Sensor> getAll(/*Pageable pageable*/) {
         return sensorRepository.findAll();
+    }
+
+    @Override
+    public Sensor getById(Long id) {
+
+        return sensorRepository.findById(id).get();
     }
 }

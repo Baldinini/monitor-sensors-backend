@@ -59,10 +59,17 @@ public class SensorController {
         return sensorService.getAll().stream().map(mapper::toDto).collect(Collectors.toList());
     }
 
-    @GetMapping("/description")
-    public String getDescription(@RequestParam String name) {
+    @GetMapping("/{id}/description")
+    public String getDescription(@PathVariable Long id) {
 
         log.warn("method: getDescription");
-        return sensorService.getDescription(name);
+        return sensorService.getDescription(id);
+    }
+
+    @GetMapping("/{id}")
+    public SensorResponseDto getById(@PathVariable Long id) {
+
+        log.warn("method: getSensorById");
+        return mapper.toDto(sensorService.getById(id));
     }
 }
